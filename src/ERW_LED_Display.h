@@ -33,9 +33,28 @@ class ERW_LED_Display
 
 	//Public Functions
 
-		ERW_LED_Display(uint8_t);
+		ERW_LED_Display(uint8_t display_type );
 		void begin_alphanumeric(void);
-		uint32_t ASCII2SEG18(uint8_t ASCII_input);
+
+		uint32_t ASCII2AN(uint8_t ASCII_input );
+
+		void lineRotation(uint8_t (&quarter_select)[4] );
+		void xRotation(uint8_t (&half_select)[2] );
+		void handRotation(uint8_t (&eighth_select)[8] );
+		void fillRotation(uint8_t (&eighth_select[8] );
+		void fillAntiRotation(uint8_t (&eighth_select[8] );
+
+		void halfRotation(uint8_t (&quarter_select[4] );
+		void quarterRotation(uint8_t (&quarter_select[4] );
+
+		void verticalBars(uint8_t (&third_select[3] );
+		void verticalFill(uint8_t (&fifth_select[5] );
+		void horizontalBars(uint8_t (&third_select[3] );
+		void horizontalFill(uint8_t (&fifth_select[5] );
+		void (uint8_t  );
+
+
+
 
 	//Public Variables
 

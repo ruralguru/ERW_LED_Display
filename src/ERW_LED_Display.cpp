@@ -14,8 +14,7 @@ Editor: Earl R. Watkins II Title: ERW_PCA9685.h Date: 04/06/2019
 #include "ERW_LED_Display.h"
 
 /**
- * @brief ERW_LED_Display Contructor for the led Driver correction functions allcall address.
- *                    No inputs needed. sets up everything to default.
+ * @brief ERW_LED_Display Contructor
  */
 ERW_LED_Display::ERW_LED_Display(uint8_t display_type);
 {
@@ -45,6 +44,9 @@ ERW_LED_Display::ERW_LED_Display(uint8_t display_type);
   }
 }
 
+/**
+ * ERW_LED_Display constructor
+ */
 ERW_LED_Display::begin_alphanumeric(void)
 {
   if( ERW_LED_Display_type && 0x0F )
@@ -149,7 +151,12 @@ ERW_LED_Display::begin_alphanumeric(void)
   AlphaNumeric_ASCII[126] = AN_F | AN_H | AN_K; /* ~ */
 }
 
-uint32_t ERW_LED_Display::ASCII2SEG18(uint8_t ASCII_input)
+/**
+ * [ERW_LED_Display::ASCII2SEG18 description]
+ * @param  ASCII_input [description]
+ * @return             [description]
+ */
+uint32_t ERW_LED_Display::ASCII2AN(uint8_t ASCII_input)
 {
   uint32_t returnValue = 0;
   returnValue = AlphaNumeric_ASCII[ASCII_input];
