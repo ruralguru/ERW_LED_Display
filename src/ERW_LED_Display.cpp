@@ -16,7 +16,7 @@ Editor: Earl R. Watkins II Title: ERW_PCA9685.h Date: 04/06/2019
 /**
  * @brief ERW_LED_Display Contructor
  */
-ERW_LED_Display::ERW_LED_Display(uint8_t display_type);
+ERW_LED_Display::ERW_LED_Display(uint8_t display_type)
 {
   ERW_LED_Display_type = display_type;
   if ( ERW_LED_Display_type && Display_18 )
@@ -47,13 +47,14 @@ ERW_LED_Display::ERW_LED_Display(uint8_t display_type);
 /**
  * ERW_LED_Display constructor
  */
-ERW_LED_Display::begin_alphanumeric(void)
+uint8_t ERW_LED_Display::begin_alphanumeric(void)
 {
+  uint8_t returnVar = 0;
   if( ERW_LED_Display_type && 0x0F )
   {
-    return;
+    returnVar = 0;
+    return returnVar;
   }
-
   AlphaNumeric_ASCII[32] = 0x00000000; /* space */
   AlphaNumeric_ASCII[33] = AN_B | AN_C | AN_DP1; /* ! */
   AlphaNumeric_ASCII[34] = AN_B | AN_F; /* " */
@@ -113,7 +114,7 @@ ERW_LED_Display::begin_alphanumeric(void)
   AlphaNumeric_ASCII[88] = AN_H | AN_K | AN_N | AN_L; /* X */
   AlphaNumeric_ASCII[89] = AN_H | AN_K | AN_M; /* Y */
   AlphaNumeric_ASCII[90] = AN_A1 | AN_A2 | AN_D1 | AN_D2 | AN_K | AN_N; /* Z */
-  AlphaNumeric_ASCII[91] = AN_A2 | AN_D2 | AN_J | AN_M\ ; /* [ */
+  AlphaNumeric_ASCII[91] = AN_A2 | AN_D2 | AN_J | AN_M ; /* [ */
   AlphaNumeric_ASCII[92] = AN_H | AN_L; /* \ */
   AlphaNumeric_ASCII[93] = AN_A1 | AN_D1 | AN_J | AN_M; /* ] */
   AlphaNumeric_ASCII[94] = AN_N | AN_L; /* ^ */
@@ -160,5 +161,65 @@ uint32_t ERW_LED_Display::ASCII2AN(uint8_t ASCII_input)
 {
   uint32_t returnValue = 0;
   returnValue = AlphaNumeric_ASCII[ASCII_input];
-  return ReturnValue;
+  return returnValue;
+}
+
+void ERW_LED_Display::lineRotation(uint8_t (&quarter_select)[4] )
+{
+
+}
+
+void ERW_LED_Display::xRotation(uint8_t (&half_select)[2] )
+{
+
+}
+
+void ERW_LED_Display::handRotation(uint8_t (&eighth_select)[8] )
+{
+
+}
+
+void ERW_LED_Display::halfRotation(uint8_t (&eighth_select)[8] )
+{
+
+}
+
+void ERW_LED_Display::quarterRotation(uint8_t (&eighth_select)[8] )
+{
+
+}
+
+void ERW_LED_Display::eighthRotation(uint8_t (&eighth_select)[8] )
+{
+
+}
+
+void ERW_LED_Display::fillPositive(uint8_t (&eighth_select)[8] )
+{
+
+}
+
+void ERW_LED_Display::fillNegative(uint8_t (&eighth_select)[8] )
+{
+
+}
+
+void ERW_LED_Display::verticalBars(uint8_t (&third_select)[3] )
+{
+
+}
+
+void ERW_LED_Display::verticalFill(uint8_t (&fifth_select)[5] )
+{
+
+}
+
+void ERW_LED_Display::horizontalBars(uint8_t (&third_select)[3] )
+{
+
+}
+
+void ERW_LED_Display::horizontalFill(uint8_t (&fifth_select)[5] )
+{
+
 }

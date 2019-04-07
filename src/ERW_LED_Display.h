@@ -34,24 +34,24 @@ class ERW_LED_Display
 	//Public Functions
 
 		ERW_LED_Display(uint8_t display_type );
-		void begin_alphanumeric(void);
+		uint8_t begin_alphanumeric(void);
 
 		uint32_t ASCII2AN(uint8_t ASCII_input );
 
 		void lineRotation(uint8_t (&quarter_select)[4] );
 		void xRotation(uint8_t (&half_select)[2] );
 		void handRotation(uint8_t (&eighth_select)[8] );
-		void fillRotation(uint8_t (&eighth_select[8] );
-		void fillAntiRotation(uint8_t (&eighth_select[8] );
+		void halfRotation(uint8_t (&eighth_select)[8] );
+		void quarterRotation(uint8_t (&eighth_select)[8] );
+		void eighthRotation(uint8_t (&eighth_select)[8] );
 
-		void halfRotation(uint8_t (&quarter_select[4] );
-		void quarterRotation(uint8_t (&quarter_select[4] );
+		void fillPositive(uint8_t (&eighth_select)[8] );
+		void fillNegative(uint8_t (&eighth_select)[8] );
 
-		void verticalBars(uint8_t (&third_select[3] );
-		void verticalFill(uint8_t (&fifth_select[5] );
-		void horizontalBars(uint8_t (&third_select[3] );
-		void horizontalFill(uint8_t (&fifth_select[5] );
-		void (uint8_t  );
+		void verticalBars(uint8_t (&third_select)[3] );
+		void verticalFill(uint8_t (&fifth_select)[5] );
+		void horizontalBars(uint8_t (&third_select)[3] );
+		void horizontalFill(uint8_t (&fifth_select)[5] );
 
 
 
@@ -65,6 +65,7 @@ class ERW_LED_Display
 
 	//Private Variables
 	uint8_t ERW_LED_Display_type;
+
 	enum
 	{
 		Display_7		= 0x01,	/*  7 segment display, for displaying integers */
@@ -91,8 +92,10 @@ class ERW_LED_Display
 		uint32_t AN_L;
 		uint32_t AN_M;
 		uint32_t AN_N;
+		
+		uint32_t AN_DP1;
+		uint32_t AN_DP2;
 
-	struct alphaNumeric16 Segment_mask16;
 
 	/**
  * @brief AlphaNumeric_ASCII[128] is an array that takes in extended ASCII characters.
