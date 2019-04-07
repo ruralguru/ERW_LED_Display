@@ -1,0 +1,39 @@
+#######################################
+# Syntax Coloring Map: ERW_PCA9685
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+ERW_LED_Display	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin_alphanumeric  KEYWORD2
+ASCII2SEG18 KEYWORD2
+
+#######################################
+# Structures (KEYWORD3)
+#######################################
+
+ERW_LED_Display_type  KEYWORD3
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+ASCII_NULL  LITERAL1
+ASCII_BS  LITERAL1
+ASCII_TAB LITERAL1
+ASCII_LF  LITERAL1
+ASCII_VT  LITERAL1
+ASCII_CR  LITERAL1
+ASCII_ESC LITERAL1
+ASCII_DEL LITERAL1
+
+#######################################
+# ? (LITERAL2)
+#######################################
