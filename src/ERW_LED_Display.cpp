@@ -19,41 +19,40 @@ Editor: Earl R. Watkins II Title: ERW_PCA9685.h Date: 04/06/2019
 ERW_LED_Display::ERW_LED_Display(uint8_t display_type)
 {
   ERW_LED_Display_type = display_type;
-  if ( ERW_LED_Display_type && Display_18 )
+  if ( ERW_LED_Display_type & Display_18 )
   {
-    uint32_t AN_G1  = 0x0001;
-    uint32_t AN_E   = 0x0002;
-    uint32_t AN_D1  = 0x0004;
-    uint32_t AN_N   = 0x0008;
-    uint32_t AN_M   = 0x0010;
-    uint32_t AN_D2  = 0x0020;
-    uint32_t AN_L   = 0x0040;
-    uint32_t AN_C   = 0x0080;
+    AN_G1  = 0x0001;
+    AN_E   = 0x0002;
+    AN_D1  = 0x0004;
+    AN_N   = 0x0008;
+    AN_M   = 0x0010;
+    AN_D2  = 0x0020;
+    AN_L   = 0x0040;
+    AN_C   = 0x0080;
 
-    uint32_t AN_G2  = 0x0100;
-    uint32_t AN_B   = 0x0200;
-    uint32_t AN_A2  = 0x0400;
-    uint32_t AN_K   = 0x0800;
-    uint32_t AN_J   = 0x1000;
-    uint32_t AN_A1  = 0x2000;
-    uint32_t AN_H   = 0x4000;
-    uint32_t AN_F   = 0x8000;
+    AN_G2  = 0x0100;
+    AN_B   = 0x0200;
+    AN_A2  = 0x0400;
+    AN_K   = 0x0800;
+    AN_J   = 0x1000;
+    AN_A1  = 0x2000;
+    AN_H   = 0x4000;
+    AN_F   = 0x8000;
 
-    uint32_t AN_DP1 = 0x10000;
-    uint32_t AN_DP2 = 0x20000;
+    AN_DP1 = 0x10000;
+    AN_DP2 = 0x20000;
   }
 }
 
 /**
  * ERW_LED_Display constructor
  */
-uint8_t ERW_LED_Display::begin_alphanumeric(void)
+int8_t ERW_LED_Display::begin_alphanumeric(void)
 {
   uint8_t returnVar = 0;
-  if( ERW_LED_Display_type && 0x0F )
+  if( ERW_LED_Display_type & 0x0F )
   {
-    returnVar = 0;
-    return returnVar;
+    returnVar = -1;
   }
   AlphaNumeric_ASCII[32] = 0x00000000; /* space */
   AlphaNumeric_ASCII[33] = AN_B | AN_C | AN_DP1; /* ! */
@@ -150,6 +149,8 @@ uint8_t ERW_LED_Display::begin_alphanumeric(void)
   AlphaNumeric_ASCII[124] = AN_J | AN_M; /* | */
   AlphaNumeric_ASCII[125] = AN_A1 | AN_D1 | AN_G2 | AN_J | AN_M; /* } */
   AlphaNumeric_ASCII[126] = AN_F | AN_H | AN_K; /* ~ */
+
+  return returnVar;
 }
 
 /**

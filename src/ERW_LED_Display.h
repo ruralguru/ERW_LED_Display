@@ -34,7 +34,7 @@ class ERW_LED_Display
 	//Public Functions
 
 		ERW_LED_Display(uint8_t display_type );
-		uint8_t begin_alphanumeric(void);
+		int8_t begin_alphanumeric(void);
 
 		uint32_t ASCII2AN(uint8_t ASCII_input );
 
@@ -92,7 +92,7 @@ class ERW_LED_Display
 		uint32_t AN_L;
 		uint32_t AN_M;
 		uint32_t AN_N;
-		
+
 		uint32_t AN_DP1;
 		uint32_t AN_DP2;
 
