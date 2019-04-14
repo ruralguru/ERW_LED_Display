@@ -13,8 +13,21 @@ ERW_LED_Display	KEYWORD1
 #######################################
 
 begin_alphanumeric  KEYWORD2
-ASCII2SEG18 KEYWORD2
+ASCII2AN  KEYWORD2
 
+lineRotation  KEYWORD2
+xRotation KEYWORD2
+handRotation  KEYWORD2
+halfRotation  KEYWORD2
+quarterRotation KEYWORD2
+eighthRotation  KEYWORD2
+
+fillPositive  KEYWORD2
+fillNegative  KEYWORD2
+
+verticalBars  KEYWORD2
+verticalFill  KEYWORD2
+horizontalFill  KEYWORD2
 #######################################
 # Structures (KEYWORD3)
 #######################################
@@ -33,6 +46,13 @@ ASCII_VT  LITERAL1
 ASCII_CR  LITERAL1
 ASCII_ESC LITERAL1
 ASCII_DEL LITERAL1
+
+Display_7 LITERAL1
+Display_9 LITERAL1
+Display_14  LITERAL1
+Display_16  LITERAL1
+Display_17  LITERAL1
+Display_18  LITERAL1
 
 #######################################
 # ? (LITERAL2)

@@ -122,20 +122,20 @@ int8_t ERW_LED_Display::begin_alphanumeric(void)
   AlphaNumeric_ASCII[97] = AN_D1 | AN_D2 | AN_E | AN_G1 | AN_M; /* a */
   AlphaNumeric_ASCII[98] = AN_D1| AN_E | AN_F | AN_G1 | AN_M; /* b */
   AlphaNumeric_ASCII[99] = AN_D1 | AN_E | AN_G1; /* c */
-  AlphaNumeric_ASCII[100] = AN_B | AN_C | AN_D2 | AN_G2 | AN_M; /* d */
-  AlphaNumeric_ASCII[101] = AN_D1 | AN_D2 | AN_E | AN_G1 | AN_N; /* e */
+  AlphaNumeric_ASCII[100] = AN_D1 | AN_E | AN_G1 | AN_J | AN_M; /* d */
+  AlphaNumeric_ASCII[101] = AN_D1 | /* AN_D2 | */AN_E | AN_G1 | AN_N; /* e */
   AlphaNumeric_ASCII[102] = AN_A2 | AN_G1 | AN_G2 | AN_J | AN_M; /* f */
-  AlphaNumeric_ASCII[103] = AN_A1 | AN_A2 | AN_C | AN_D1 | AN_D2 | AN_E | AN_F | AN_G2; /* g */
+  AlphaNumeric_ASCII[103] = AN_A1 | AN_D1 | AN_F | AN_G1 | AN_J | AN_M; /* g */
   AlphaNumeric_ASCII[104] = AN_E | AN_F | AN_G1 | AN_M; /* h */
   AlphaNumeric_ASCII[105] = AN_A1 | AN_D1 | AN_D2 | AN_G1 | AN_M; /* i */
-  AlphaNumeric_ASCII[106] = AN_B | AN_C | AN_D1 | AN_D2 | AN_E; /* j */
-  AlphaNumeric_ASCII[107] = AN_E | AN_F | AN_G1 | AN_G2 | AN_L; /* k */
+  AlphaNumeric_ASCII[106] = AN_D1 | AN_E | AN_J | AN_M; /* j */
+  AlphaNumeric_ASCII[107] = AN_G2 | AN_J | AN_L | AN_M; /* k */
   AlphaNumeric_ASCII[108] = AN_A1 | AN_D2 | AN_J | AN_M; /* l */
   AlphaNumeric_ASCII[109] = AN_C | AN_E | AN_G1 | AN_G2 | AN_M; /* m */
   AlphaNumeric_ASCII[110] = AN_E | AN_G1 | AN_M; /* n */
   AlphaNumeric_ASCII[111] = AN_D1 | AN_E | AN_G1 | AN_M; /* o */
-  AlphaNumeric_ASCII[112] = AN_A1 | AN_A2 | AN_B | AN_E | AN_F | AN_G1 | AN_G2; /* p */
-  AlphaNumeric_ASCII[113] = AN_A1 | AN_A2 | AN_B | AN_C | AN_D1 | AN_D2 | AN_E | AN_F | AN_L; /* q */
+  AlphaNumeric_ASCII[112] = AN_A1 | AN_E | AN_F | AN_G1 | AN_J; /* p */
+  AlphaNumeric_ASCII[113] = AN_A1 | AN_D2 | AN_F | AN_G1 | AN_J | AN_M; /* q */
   AlphaNumeric_ASCII[114] = AN_E | AN_G1; /* r */
   AlphaNumeric_ASCII[115] = AN_D2 | AN_G2 | AN_L; /* s */
   AlphaNumeric_ASCII[116] = AN_D2 | AN_G1 | AN_G2 | AN_J | AN_M; /* t */
@@ -155,8 +155,9 @@ int8_t ERW_LED_Display::begin_alphanumeric(void)
 
 /**
  * [ERW_LED_Display::ASCII2SEG18 description]
- * @param  ASCII_input [description]
- * @return             [description]
+ * @param  ASCII_input input a printable ansii character
+ * @return             uint32_t for 16bit LED, four bits for DPs,
+*                      four used for control characters, and 8 are reserved
  */
 uint32_t ERW_LED_Display::ASCII2AN(uint8_t ASCII_input)
 {

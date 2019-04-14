@@ -16,14 +16,21 @@
 
 #include <Arduino.h>
 
-#define ASCII_NULL    0x100000
-#define ASCII_BS      0x200000
-#define ASCII_TAB     0x300000
-#define ASCII_LF      0x400000
-#define ASCII_VT      0x500000
-#define ASCII_CR      0x600000
-#define ASCII_ESC     0x700000
-#define ASCII_DEL     0x800000
+#define ASCII_NULL    0x1000000
+#define ASCII_BS      0x2000000
+#define ASCII_TAB     0x3000000
+#define ASCII_LF      0x4000000
+#define ASCII_VT      0x5000000
+#define ASCII_CR      0x6000000
+#define ASCII_ESC     0x7000000
+#define ASCII_DEL     0x8000000
+
+#define	Display_7			0x01	/*  7 segment display, for displaying integers */
+#define	Display_9			0x02	/*  9 segment display, has cross lines for less boxy integers */
+#define	Display_14		0x10	/* 14 segment display, for displaying integers and simple characters */
+#define	Display_16		0x20	/* 16 segment display, for displaying integers and complex characters */
+#define	Display_17		0x40	/* 17 segment display, 16 segment display with a single dot */
+#define	Display_18		0x80	/* 18 segment display, 16 segment display with a dot in 2 corners */
 
 //Include needed libraries with ifndef
 
@@ -64,17 +71,7 @@ class ERW_LED_Display
 
 
 	//Private Variables
-	uint8_t ERW_LED_Display_type;
-
-	enum
-	{
-		Display_7		= 0x01,	/*  7 segment display, for displaying integers */
-		Display_9		= 0x02,	/*  9 segment display, has cross lines for less boxy integers */
-		Display_14	= 0x10,	/* 14 segment display, for displaying integers and simple characters */
-		Display_16	= 0x20,	/* 16 segment display, for displaying integers and complex characters */
-		Display_17	= 0x40,	/* 17 segment display, 16 segment display with a single dot */
-		Display_18	= 0x80	/* 18 segment display, 16 segment display with a dot in 2 corners */
-	};
+	uint8_t LED_Display_type;
 
 		uint32_t AN_A1;
 		uint32_t AN_A2;
@@ -107,6 +104,7 @@ class ERW_LED_Display
  *                hex 7 is reserved.
 */
 uint32_t AlphaNumeric_ASCII[128];
+uint8_t ERW_LED_Display_type;
 
 
 };
