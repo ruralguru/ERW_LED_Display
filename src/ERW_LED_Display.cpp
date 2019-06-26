@@ -21,23 +21,23 @@ ERW_LED_Display::ERW_LED_Display(uint8_t display_type)
   ERW_LED_Display_type = display_type;
   if ( ERW_LED_Display_type & Display_18 )
   {
-    AN_G1  = 0x0001;
-    AN_E   = 0x0002;
-    AN_D1  = 0x0004;
-    AN_N   = 0x0008;
-    AN_M   = 0x0010;
-    AN_D2  = 0x0020;
-    AN_L   = 0x0040;
-    AN_C   = 0x0080;
+    AN_G1  = 0x0080;
+    AN_E   = 0x0040;
+    AN_D1  = 0x0020;
+    AN_N   = 0x0010;
+    AN_M   = 0x0008;
+    AN_D2  = 0x0004;
+    AN_L   = 0x0002;
+    AN_C   = 0x0001;
 
-    AN_G2  = 0x0100;
-    AN_B   = 0x0200;
-    AN_A2  = 0x0400;
-    AN_K   = 0x0800;
-    AN_J   = 0x1000;
-    AN_A1  = 0x2000;
-    AN_H   = 0x4000;
-    AN_F   = 0x8000;
+    AN_G2  = 0x8000;
+    AN_B   = 0x4000;
+    AN_A2  = 0x2000;
+    AN_K   = 0x1000;
+    AN_J   = 0x0800;
+    AN_A1  = 0x0400;
+    AN_H   = 0x0200;
+    AN_F   = 0x0100;
 
     AN_DP1 = 0x10000;
     AN_DP2 = 0x20000;
@@ -66,7 +66,7 @@ int8_t ERW_LED_Display::begin_alphanumeric(void)
   AlphaNumeric_ASCII[41] = AN_H | AN_N; /* ) */
   AlphaNumeric_ASCII[42] = AN_G1 | AN_G2 | AN_H | AN_J | AN_K | AN_N | AN_M | AN_L; /* * */
   AlphaNumeric_ASCII[43] = AN_G1 | AN_G2 | AN_J | AN_M; /* + */
-  AlphaNumeric_ASCII[44] = AN_D1; /* , */
+  AlphaNumeric_ASCII[44] = AN_D2 | AN_DP1; /* , */
   AlphaNumeric_ASCII[45] = AN_G1 | AN_G2; /* - */
   AlphaNumeric_ASCII[46] = AN_DP1; /* . */
   AlphaNumeric_ASCII[47] = AN_K | AN_N; /* / */
@@ -79,7 +79,7 @@ int8_t ERW_LED_Display::begin_alphanumeric(void)
   AlphaNumeric_ASCII[54] = AN_A1 | AN_A2 | AN_C | AN_D1 | AN_D2 | AN_E | AN_F | AN_G1 | AN_G2; /* 6 */
   AlphaNumeric_ASCII[55] = AN_A1 | AN_A2 | AN_B | AN_C; /* 7 */
   AlphaNumeric_ASCII[56] = AN_A1 | AN_A2 | AN_B | AN_C | AN_D1 | AN_D2 | AN_E | AN_F | AN_G1 | AN_G2; /* 8 */
-  AlphaNumeric_ASCII[57] = AN_A1 | AN_A2 | AN_B | AN_C | AN_D1 | AN_D2 | AN_F | AN_G1 | AN_G2; /* 9 */
+  AlphaNumeric_ASCII[57] = AN_A1 | AN_A2 | AN_B | AN_C | AN_F | AN_G1 | AN_G2; /* 9 */
   AlphaNumeric_ASCII[58] = AN_D1 | AN_G1; /* : */
   AlphaNumeric_ASCII[59] = AN_A1 | AN_N; /* ; */
   AlphaNumeric_ASCII[60] = AN_K | AN_L; /* < */
@@ -168,60 +168,154 @@ uint32_t ERW_LED_Display::ASCII2AN(uint8_t ASCII_input)
 
 void ERW_LED_Display::lineRotation(uint8_t (&quarter_select)[4] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    quarter_select[0] = AN_J | AN_M;
+    quarter_select[1] = AN_K | AN_N;
+    quarter_select[2] = AN_G1 | AN_G2;
+    quarter_select[3] = AN_H | AN_L;
+  }
 }
 
 void ERW_LED_Display::xRotation(uint8_t (&half_select)[2] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    half_select[0] = AN_J | AN_M | AN_G1 | AN_G2;
+    half_select[1] = AN_H | AN_K | AN_N | AN_L;
+  }
 }
 
 void ERW_LED_Display::handRotation(uint8_t (&eighth_select)[8] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    eighth_select[0] = AN_J;
+    eighth_select[1] = AN_K;
+    eighth_select[2] = AN_G2;
+    eighth_select[3] = AN_L;
+    eighth_select[4] = AN_M;
+    eighth_select[5] = AN_N;
+    eighth_select[6] = AN_G1;
+    eighth_select[7] = AN_H;
+  }
 }
 
 void ERW_LED_Display::halfRotation(uint8_t (&eighth_select)[8] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    eighth_select[0] = AN_J | AN_K | AN_G2 | AN_L | AN_M;
+    eighth_select[1] = AN_K | AN_G2 | AN_L | AN_M | AN_N;
+    eighth_select[2] = AN_G2 | AN_L | AN_M | AN_N | AN_G1;
+    eighth_select[3] = AN_L | AN_M | AN_N | AN_G1 | AN_H;
+    eighth_select[4] = AN_M | AN_N | AN_G1 | AN_H | AN_J;
+    eighth_select[5] = AN_N | AN_G1 | AN_H | AN_J | AN_K;
+    eighth_select[6] = AN_G1 | AN_H |AN_J | AN_K | AN_G2;
+    eighth_select[7] = AN_H |AN_J | AN_K | AN_G2 | AN_L;
+  }
 }
 
 void ERW_LED_Display::quarterRotation(uint8_t (&eighth_select)[8] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    eighth_select[0] = AN_J | AN_K | AN_G2;
+    eighth_select[1] = AN_K | AN_G2 | AN_L;
+    eighth_select[2] = AN_G2 | AN_L | AN_M;
+    eighth_select[3] = AN_L | AN_M | AN_N;
+    eighth_select[4] = AN_M | AN_N | AN_G1;
+    eighth_select[5] = AN_N | AN_G1 | AN_H;
+    eighth_select[6] = AN_G1 | AN_H |AN_J;
+    eighth_select[7] = AN_H |AN_J | AN_K;
+  }
 }
 
 void ERW_LED_Display::eighthRotation(uint8_t (&eighth_select)[8] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    eighth_select[0] = AN_J | AN_K;
+    eighth_select[1] = AN_K | AN_G2;
+    eighth_select[2] = AN_G2 | AN_L;
+    eighth_select[3] = AN_L | AN_M;
+    eighth_select[4] = AN_M | AN_N;
+    eighth_select[5] = AN_N | AN_G1;
+    eighth_select[6] = AN_G1 | AN_H;
+    eighth_select[7] = AN_H |AN_J;
+  }
 }
 
 void ERW_LED_Display::fillPositive(uint8_t (&eighth_select)[8] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    eighth_select[0] = AN_J;
+    eighth_select[1] = AN_J | AN_K;
+    eighth_select[2] = AN_J | AN_K | AN_G2;
+    eighth_select[3] = AN_J | AN_K | AN_G2 | AN_L;
+    eighth_select[4] = AN_J | AN_K | AN_G2 | AN_L | AN_M;
+    eighth_select[5] = AN_J | AN_K | AN_G2 | AN_L | AN_M | AN_N;
+    eighth_select[6] = AN_J | AN_K | AN_G2 | AN_L | AN_M | AN_N | AN_G1;
+    eighth_select[7] = AN_J | AN_K | AN_G2 | AN_L | AN_M | AN_N | AN_G1 | AN_H;
+  }
 }
 
 void ERW_LED_Display::fillNegative(uint8_t (&eighth_select)[8] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    eighth_select[0] = AN_H;
+    eighth_select[1] = AN_H | AN_G1;
+    eighth_select[2] = AN_H | AN_G1 | AN_N;
+    eighth_select[3] = AN_H | AN_G1 | AN_N | AN_M;
+    eighth_select[4] = AN_H | AN_G1 | AN_N | AN_M | AN_L;
+    eighth_select[5] = AN_H | AN_G1 | AN_N | AN_M | AN_L | AN_G2;
+    eighth_select[6] = AN_H | AN_G1 | AN_N | AN_M | AN_L | AN_G2 | AN_K;
+    eighth_select[7] = AN_H | AN_G1 | AN_N | AN_M | AN_L | AN_G2 | AN_K | AN_J;
+  }
 }
 
 void ERW_LED_Display::verticalBars(uint8_t (&third_select)[3] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    third_select[0] = AN_D1 | AN_D2;
+    third_select[1] = AN_G1 | AN_G2;
+    third_select[2] = AN_A1 | AN_A2;
+  }
 }
 
 void ERW_LED_Display::verticalFill(uint8_t (&fifth_select)[5] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    fifth_select[0] = AN_D1 | AN_D2;
+    fifth_select[1] = AN_D1 | AN_D2 | AN_E | AN_N | AN_M | AN_L | AN_C;
+    fifth_select[2] = AN_D1 | AN_D2 | AN_E | AN_N | AN_M | AN_L | AN_C | AN_G1 | AN_G2;
+    fifth_select[3] = AN_D1 | AN_D2 | AN_E | AN_N | AN_M | AN_L | AN_C | AN_G1 | AN_G2 | AN_F | AN_H | AN_J | AN_K | AN_B;
+    fifth_select[5] = AN_D1 | AN_D2 | AN_E | AN_N | AN_M | AN_L | AN_C | AN_G1 | AN_G2 | AN_F | AN_H | AN_J | AN_K | AN_B | AN_A1 | AN_A2;
+  }
 }
 
 void ERW_LED_Display::horizontalBars(uint8_t (&third_select)[3] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    third_select[0] = AN_E | AN_F;
+    third_select[1] = AN_J | AN_M;
+    third_select[2] = AN_B | AN_C;
+  }
 }
 
 void ERW_LED_Display::horizontalFill(uint8_t (&fifth_select)[5] )
 {
-
+  if( ERW_LED_Display_type & 0xF0 )
+  {
+    fifth_select[0] = AN_E | AN_F;
+    fifth_select[0] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1;
+    fifth_select[1] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1 | AN_J | AN_M;
+    fifth_select[1] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1 | AN_J | AN_M | AN_A2 | AN_K | AN_G2 | AN_L | AN_D2;
+    fifth_select[2] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1 | AN_J | AN_M | AN_A2 | AN_K | AN_G2 | AN_L | AN_D2 | AN_B | AN_C;
+  }
 }
