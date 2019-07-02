@@ -1,14 +1,8 @@
-/*
-Editor: Earl R. Watkins II Title: ERW_PCA9685.h Date: 04/06/2019
-
-	LED character generator
-
-	Notes:
-
-	Based on: experience
-
-	This example code uses the "beerware" license. Use it, modify it, and/or reference it.
-	If you find it useful, buy me an ice cold tasty beverage someday.
+/**
+ * @file ERW_LED_Display.cpp
+ * @author Earl R. Watkins II
+ * @date 04/06/2019
+ * @brief Overall library for running the Clock Speaker Display Board.
 */
 
 #include "ERW_LED_Display.h"
