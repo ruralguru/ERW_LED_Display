@@ -2,7 +2,7 @@
  * @file ERW_LED_Display.cpp
  * @author Earl R. Watkins II
  * @date 04/06/2019
- * @brief Overall library for running the Clock Speaker Display Board.
+ * @brief Library for turning turning strings into binary led drive as well as special display setups.
 */
 
 #include "ERW_LED_Display.h"
