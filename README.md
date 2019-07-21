@@ -5,11 +5,11 @@ currently supports
 1x: LUX Sensor, I2C
 -------------
 
-##Dependencies
+## Dependencies
 --------------
 The example uses [PCA9685 library](https://github.com/ruralguru/ERW_PCA9685)*
 
-##Repository Contents
+## Repository Contents
 --------------
 * **/examples** - Example sketches for the library (.ino). Run these from the Arduino IDE.
 * **/src** - Source files for the library (.cpp, .h).
@@ -18,17 +18,17 @@ The example uses [PCA9685 library](https://github.com/ruralguru/ERW_PCA9685)*
 * **library.properties** - General library properties for the Arduino package manager.
 * **LICENSE** - License file.
 
-##Documentation
---------------
+## Documentation
+
 * **[Installing an Arduino Library Guide](https://learn.sparkfun.com/tutorials/installing-an-arduino-library)** - Basic information on how to install an Arduino library.
 * **[BL-S230](https://cdn.evilmadscientist.com/im/LED/BL-S230A-13.pdf) - Pinout on page 3.**
 
 ## Authors
---------------
+
 **ERW** - [*RuralGuru Projects*](https://github.com/ruralguru)
 
-##License Information
---------------
+## License Information
+
 This product is _**GNU GENERAL PUBLIC LICENSE**_!
 
 This example code uses the GNU GENERAL PUBLIC LICENSE - see the [LICENSE.md](LICENSE.md) file for details
