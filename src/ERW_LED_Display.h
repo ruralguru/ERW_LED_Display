@@ -39,20 +39,20 @@ class ERW_LED_Display
 
 		uint32_t ASCII2AN(uint8_t ASCII_input );
 
-		void lineRotation(uint8_t (&quarter_select)[4] );
-		void xRotation(uint8_t (&half_select)[2] );
-		void handRotation(uint8_t (&eighth_select)[8] );
-		void halfRotation(uint8_t (&eighth_select)[8] );
-		void quarterRotation(uint8_t (&eighth_select)[8] );
-		void eighthRotation(uint8_t (&eighth_select)[8] );
+		void lineRotation(uint16_t (&quarter_select)[4] );
+		void xRotation(uint16_t (&half_select)[2] );
+		void handRotation(uint16_t (&eighth_select)[8] );
+		void halfRotation(uint16_t (&eighth_select)[8] );
+		void quarterRotation(uint16_t (&eighth_select)[8] );
+		void eighthRotation(uint16_t (&eighth_select)[8] );
 
-		void fillPositive(uint8_t (&eighth_select)[8] );
-		void fillNegative(uint8_t (&eighth_select)[8] );
+		void fillPositive(uint16_t (&eighth_select)[8] );
+		void fillNegative(uint16_t (&eighth_select)[8] );
 
-		void verticalBars(uint8_t (&third_select)[3] );
-		void verticalFill(uint8_t (&fifth_select)[5] );
-		void horizontalBars(uint8_t (&third_select)[3] );
-		void horizontalFill(uint8_t (&fifth_select)[5] );
+		void verticalBars(uint16_t (&third_select)[3] );
+		void verticalFill(uint16_t (&fifth_select)[5] );
+		void horizontalBars(uint16_t (&third_select)[3] );
+		void horizontalFill(uint16_t (&fifth_select)[5] );
 
 
 

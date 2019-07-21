@@ -160,7 +160,7 @@ uint32_t ERW_LED_Display::ASCII2AN(uint8_t ASCII_input)
   return returnValue;
 }
 
-void ERW_LED_Display::lineRotation(uint8_t (&quarter_select)[4] )
+void ERW_LED_Display::lineRotation(uint16_t (&quarter_select)[4] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
@@ -171,7 +171,7 @@ void ERW_LED_Display::lineRotation(uint8_t (&quarter_select)[4] )
   }
 }
 
-void ERW_LED_Display::xRotation(uint8_t (&half_select)[2] )
+void ERW_LED_Display::xRotation(uint16_t (&half_select)[2] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
@@ -180,7 +180,7 @@ void ERW_LED_Display::xRotation(uint8_t (&half_select)[2] )
   }
 }
 
-void ERW_LED_Display::handRotation(uint8_t (&eighth_select)[8] )
+void ERW_LED_Display::handRotation(uint16_t (&eighth_select)[8] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
@@ -195,7 +195,7 @@ void ERW_LED_Display::handRotation(uint8_t (&eighth_select)[8] )
   }
 }
 
-void ERW_LED_Display::halfRotation(uint8_t (&eighth_select)[8] )
+void ERW_LED_Display::halfRotation(uint16_t (&eighth_select)[8] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
@@ -210,7 +210,7 @@ void ERW_LED_Display::halfRotation(uint8_t (&eighth_select)[8] )
   }
 }
 
-void ERW_LED_Display::quarterRotation(uint8_t (&eighth_select)[8] )
+void ERW_LED_Display::quarterRotation(uint16_t (&eighth_select)[8] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
@@ -225,7 +225,7 @@ void ERW_LED_Display::quarterRotation(uint8_t (&eighth_select)[8] )
   }
 }
 
-void ERW_LED_Display::eighthRotation(uint8_t (&eighth_select)[8] )
+void ERW_LED_Display::eighthRotation(uint16_t (&eighth_select)[8] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
@@ -240,7 +240,7 @@ void ERW_LED_Display::eighthRotation(uint8_t (&eighth_select)[8] )
   }
 }
 
-void ERW_LED_Display::fillPositive(uint8_t (&eighth_select)[8] )
+void ERW_LED_Display::fillPositive(uint16_t (&eighth_select)[8] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
@@ -255,7 +255,7 @@ void ERW_LED_Display::fillPositive(uint8_t (&eighth_select)[8] )
   }
 }
 
-void ERW_LED_Display::fillNegative(uint8_t (&eighth_select)[8] )
+void ERW_LED_Display::fillNegative(uint16_t (&eighth_select)[8] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
@@ -270,7 +270,7 @@ void ERW_LED_Display::fillNegative(uint8_t (&eighth_select)[8] )
   }
 }
 
-void ERW_LED_Display::verticalBars(uint8_t (&third_select)[3] )
+void ERW_LED_Display::verticalBars(uint16_t (&third_select)[3] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
@@ -280,7 +280,7 @@ void ERW_LED_Display::verticalBars(uint8_t (&third_select)[3] )
   }
 }
 
-void ERW_LED_Display::verticalFill(uint8_t (&fifth_select)[5] )
+void ERW_LED_Display::verticalFill(uint16_t (&fifth_select)[5] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
@@ -288,11 +288,11 @@ void ERW_LED_Display::verticalFill(uint8_t (&fifth_select)[5] )
     fifth_select[1] = AN_D1 | AN_D2 | AN_E | AN_N | AN_M | AN_L | AN_C;
     fifth_select[2] = AN_D1 | AN_D2 | AN_E | AN_N | AN_M | AN_L | AN_C | AN_G1 | AN_G2;
     fifth_select[3] = AN_D1 | AN_D2 | AN_E | AN_N | AN_M | AN_L | AN_C | AN_G1 | AN_G2 | AN_F | AN_H | AN_J | AN_K | AN_B;
-    fifth_select[5] = AN_D1 | AN_D2 | AN_E | AN_N | AN_M | AN_L | AN_C | AN_G1 | AN_G2 | AN_F | AN_H | AN_J | AN_K | AN_B | AN_A1 | AN_A2;
+    fifth_select[4] = AN_D1 | AN_D2 | AN_E | AN_N | AN_M | AN_L | AN_C | AN_G1 | AN_G2 | AN_F | AN_H | AN_J | AN_K | AN_B | AN_A1 | AN_A2;
   }
 }
 
-void ERW_LED_Display::horizontalBars(uint8_t (&third_select)[3] )
+void ERW_LED_Display::horizontalBars(uint16_t (&third_select)[3] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
@@ -302,14 +302,14 @@ void ERW_LED_Display::horizontalBars(uint8_t (&third_select)[3] )
   }
 }
 
-void ERW_LED_Display::horizontalFill(uint8_t (&fifth_select)[5] )
+void ERW_LED_Display::horizontalFill(uint16_t (&fifth_select)[5] )
 {
   if( ERW_LED_Display_type & 0xF0 )
   {
     fifth_select[0] = AN_E | AN_F;
-    fifth_select[0] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1;
-    fifth_select[1] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1 | AN_J | AN_M;
-    fifth_select[1] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1 | AN_J | AN_M | AN_A2 | AN_K | AN_G2 | AN_L | AN_D2;
-    fifth_select[2] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1 | AN_J | AN_M | AN_A2 | AN_K | AN_G2 | AN_L | AN_D2 | AN_B | AN_C;
+    fifth_select[1] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1;
+    fifth_select[2] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1 | AN_J | AN_M;
+    fifth_select[3] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1 | AN_J | AN_M | AN_A2 | AN_K | AN_G2 | AN_L | AN_D2;
+    fifth_select[4] = AN_E | AN_F | AN_A1 | AN_H | AN_G1 | AN_N | AN_D1 | AN_J | AN_M | AN_A2 | AN_K | AN_G2 | AN_L | AN_D2 | AN_B | AN_C;
   }
 }
